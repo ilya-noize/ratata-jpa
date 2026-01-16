@@ -1,6 +1,5 @@
 package org.example.hibernate.user;
 
-import org.example.hibernate.user.aop.Loggable;
 import org.example.hibernate.user.service.UserService;
 import org.hibernate.Session;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;

@@ -3,9 +3,6 @@ package org.example.hibernate.user.aop;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
-import org.aspectj.lang.reflect.MethodSignature;
-import org.example.hibernate.user.User;
-import org.example.hibernate.user.UserApp;
 import org.springframework.stereotype.Component;
 
 @Aspect
