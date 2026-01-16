@@ -1,4 +1,4 @@
-package org.example.hibernate;
+package org.example.hibernate.movie;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

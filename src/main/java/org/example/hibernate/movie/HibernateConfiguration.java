@@ -1,4 +1,4 @@
-package org.example.hibernate;
+package org.example.hibernate.movie;
 
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -13,7 +13,7 @@ public class HibernateConfiguration {
 
         configuration
                 .addAnnotatedClass(Movie.class)
-                .addPackage("org.example")
+                .addPackage("org.example.hibernate.movie")
                 .setProperty("hibernate.connection.driver_class", "org.postgresql.Driver")
                 .setProperty("hibernate.connection.url", "jdbc:postgresql://localhost:5432/postgres")
                 .setProperty("hibernate.connection.username", "postgres")

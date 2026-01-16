@@ -1,4 +1,4 @@
-package org.example.hibernate;
+package org.example.hibernate.movie;
 
 import jakarta.persistence.NoResultException;
 import org.hibernate.Session;
@@ -14,7 +14,7 @@ public class Main {
 
     public static void main(String[] args) {
         AnnotationConfigApplicationContext context =
-                new AnnotationConfigApplicationContext("org.example.hibernate");
+                new AnnotationConfigApplicationContext("org.example.hibernate.movie");
         SessionFactory sessionFactory = context.getBean(SessionFactory.class);
         session = sessionFactory.openSession();
 
