@@ -1,5 +1,7 @@
 package org.example.hibernate.user;
 
+import org.example.hibernate.user.model.User;
+import org.example.hibernate.user.model.UserProfile;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import org.springframework.context.annotation.Bean;
@@ -16,6 +18,7 @@ public class HibernateConfiguration {
 
         configuration
                 .addAnnotatedClass(User.class)
+                .addAnnotatedClass(UserProfile.class)
                 .addPackage("org.example.hibernate.user")
                 .setProperty("hibernate.connection.driver_class", "org.postgresql.Driver")
                 .setProperty("hibernate.connection.url", "jdbc:postgresql://localhost:5432/postgres")

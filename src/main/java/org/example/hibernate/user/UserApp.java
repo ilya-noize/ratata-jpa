@@ -1,5 +1,8 @@
 package org.example.hibernate.user;
 
+import org.example.hibernate.user.model.User;
+import org.example.hibernate.user.model.UserProfile;
+import org.example.hibernate.user.service.UserProfileService;
 import org.example.hibernate.user.service.UserService;
 import org.hibernate.Session;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -11,29 +14,34 @@ public class UserApp {
     public static void main(String[] args) {
         AnnotationConfigApplicationContext context =
                 new AnnotationConfigApplicationContext("org.example.hibernate.user");
+
         UserService userService = context.getBean(UserService.class);
+        UserProfileService userProfileService = context.getBean(UserProfileService.class);
 
         User admin = new User("admin", "admin@telecom123.ru");
-        userService.save(admin);
-
-        admin.setEmail("root14@telecom123.ru");
-        userService.update(admin);
+        User save1 = userService.save(admin);
+        System.out.println("save1 = " + save1);
 
         User consumer = new User("consumer", "consumer@telecom123.ru");
-        User provider = new User("provider", "provider@telecom123.ru");
-        User infouser = new User("info", "info@telecom123.ru");
-        userService.save(consumer);
-        userService.save(provider);
-        userService.update(infouser);
+        User save2 = userService.save(consumer);
+        System.out.println("save2 = " + save2);
+
+        User byId1 = userService.getById(admin.id());
+        System.out.println("byId1 = " + byId1);
+        User byId2 = userService.getById(consumer.id());
+        System.out.println("byId2 = " + byId2);
+
+        UserProfile adminProfile = new UserProfile("summary One", admin);
+        UserProfile userProfile1 = userProfileService.save(adminProfile);
+        System.out.println("userProfile1 = " + userProfile1);
 
 
-
-        userService.getById(consumer.id());
-        userService.getById(admin.id());
+        UserProfile consumerProfile = new UserProfile("summary Consumer", consumer);
+        UserProfile userProfile2 = userProfileService.save(consumerProfile);
+        System.out.println("userProfile2 = " + userProfile2);
 
         userService.getAll().forEach(System.out::println);
-
-        userService.removeById(provider.id());
+        userService.removeById(consumer.id());
 
         context.close();
     }
