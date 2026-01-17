@@ -2,7 +2,6 @@ package org.example.hibernate.student;
 
 import org.example.hibernate.student.service.ProfileService;
 import org.example.hibernate.student.service.StudentService;
-import org.hibernate.SessionFactory;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import java.time.LocalDateTime;
@@ -12,7 +11,6 @@ public class Main {
     public static void main(String[] args) {
         AnnotationConfigApplicationContext context =
                 new AnnotationConfigApplicationContext("org.example.hibernate.student");
-        SessionFactory sessionFactory = context.getBean(SessionFactory.class);
 
         StudentService studentService = context.getBean(StudentService.class);
         ProfileService profileService = context.getBean(ProfileService.class);
