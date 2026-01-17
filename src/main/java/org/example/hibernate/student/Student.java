@@ -1,10 +1,12 @@
 package org.example.hibernate.student;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 import java.util.StringJoiner;
@@ -26,6 +28,12 @@ public class Student {
 
     @Column(name = "vozrast")
     private Integer age;
+
+    @OneToOne(
+            mappedBy = "student",
+            cascade = {CascadeType.REMOVE, CascadeType.DETACH}
+    )
+    private Profile profile;
 
     public Student() {
     }
@@ -60,6 +68,14 @@ public class Student {
     public Student setAge(Integer age) {
         this.age = age;
         return this;
+    }
+
+    public Profile profile() {
+        return profile;
+    }
+
+    public void setProfile(Profile profile) {
+        this.profile = profile;
     }
 
     @Override
