@@ -2,7 +2,6 @@ package org.example.hibernate.student;
 
 import org.example.hibernate.student.service.ProfileService;
 import org.example.hibernate.student.service.StudentService;
-import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
