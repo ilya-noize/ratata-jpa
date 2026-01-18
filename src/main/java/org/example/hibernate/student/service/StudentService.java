@@ -1,7 +1,6 @@
 package org.example.hibernate.student.service;
 
-import org.example.hibernate.student.Student;
-import org.example.hibernate.student.TransactionHelper;
+import org.example.hibernate.student.model.Student;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Service;

@@ -1,4 +1,4 @@
-package org.example.hibernate.student;
+package org.example.hibernate.student.model;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -6,6 +6,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
@@ -35,12 +37,17 @@ public class Student {
     )
     private Profile profile;
 
+    @ManyToOne
+    @JoinColumn(name = "group_id")
+    private Group group;
+
     public Student() {
     }
 
-    public Student(String name, Integer age) {
+    public Student(String name, Integer age, Group group) {
         this.name = name;
         this.age = age;
+        this.group = group;
     }
 
     public Long id() {
@@ -56,18 +63,16 @@ public class Student {
         return name;
     }
 
-    public Student setName(String name) {
+    public void setName(String name) {
         this.name = name;
-        return this;
     }
 
     public Integer age() {
         return age;
     }
 
-    public Student setAge(Integer age) {
+    public void setAge(Integer age) {
         this.age = age;
-        return this;
     }
 
     public Profile profile() {
@@ -76,6 +81,14 @@ public class Student {
 
     public void setProfile(Profile profile) {
         this.profile = profile;
+    }
+
+    public Group group() {
+        return group;
+    }
+
+    public void setGroup(Group group) {
+        this.group = group;
     }
 
     @Override

@@ -1,7 +1,6 @@
 package org.example.hibernate.student.service;
 
-import org.example.hibernate.student.Profile;
-import org.example.hibernate.student.TransactionHelper;
+import org.example.hibernate.student.model.Profile;
 import org.springframework.stereotype.Service;
 
 @Service
