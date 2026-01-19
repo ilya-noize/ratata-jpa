@@ -16,7 +16,7 @@ public class LogAspect {
     ) {
         Object arg = joinPoint.getArgs().length == 0 ? "null" : joinPoint.getArgs()[0];
 
-        System.out.printf("[LOG] %s: before method: %s%n argument:%s",
+        System.out.printf("[LOG] %s: before method: %s\n argument:%s%n",
                 loggable.value(),
                 joinPoint.getSignature().getName(),
                 arg
