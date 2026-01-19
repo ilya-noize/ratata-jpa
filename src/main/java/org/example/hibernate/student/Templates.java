@@ -1,6 +1,7 @@
 package org.example.hibernate.student;
 
 import jakarta.persistence.NoResultException;
+import org.example.hibernate.student.model.Student;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.resource.transaction.spi.TransactionStatus;
@@ -23,8 +24,8 @@ public class Templates {
     }
 
     void aVoid(Session session) {
-        saveStudent(session, new Student("Will", 22));
-        saveStudent(session, new Student("John", 20));
+        saveStudent(session, new Student("Will", 22, null));
+        saveStudent(session, new Student("John", 20, null));
 
         Student studentById1 = session.find(Student.class, 1L);
         System.out.println("studentById1 = " + studentById1);

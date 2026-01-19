@@ -10,6 +10,7 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 import java.util.List;
+import java.util.StringJoiner;
 
 /**
  * HibernateConfiguration add:
@@ -69,5 +70,15 @@ public class Group {
 
     public void setStudentList(List<Student> studentList) {
         this.studentList = studentList;
+    }
+
+    @Override
+    public String toString() {
+        return new StringJoiner(", ", Group.class.getSimpleName() + "[", "]")
+                .add("id=" + id)
+                .add("number='" + number + "'")
+                .add("graduationYear=" + graduationYear)
+                .add("studentList=" + studentList)
+                .toString();
     }
 }

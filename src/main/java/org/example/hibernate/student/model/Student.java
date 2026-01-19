@@ -3,14 +3,19 @@ package org.example.hibernate.student.model;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.StringJoiner;
 
 /**
@@ -41,6 +46,14 @@ public class Student {
     @JoinColumn(name = "group_id")
     private Group group;
 
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "student_courses",
+            joinColumns = @JoinColumn(name = "student_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "course_id", referencedColumnName = "id")
+    )
+    private List<Course> courseList = new ArrayList<>();
+
     public Student() {
     }
 
@@ -48,6 +61,14 @@ public class Student {
         this.name = name;
         this.age = age;
         this.group = group;
+    }
+
+    public List<Course> courseList() {
+        return courseList;
+    }
+
+    public void setCourseList(List<Course> courseList) {
+        this.courseList = courseList;
     }
 
     public Long id() {
